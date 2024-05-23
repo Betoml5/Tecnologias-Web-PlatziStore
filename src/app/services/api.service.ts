@@ -24,4 +24,15 @@ export class ApiService {
   createProduct(product: any) {
     return this.http.post('https://api.escuelajs.co/api/v1/products', product);
   }
+
+  deleteProduct(id: number) {
+    return this.http.delete(`https://api.escuelajs.co/api/v1/products/${id}`);
+  }
+
+  updateProduct(id: number, product: Product) {
+    return this.http.put(
+      `https://api.escuelajs.co/api/v1/products/${id}`,
+      product
+    );
+  }
 }

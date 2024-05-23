@@ -1,4 +1,4 @@
-<div class="grid grid-cols-8 p-4">
+<!-- <div class="grid grid-cols-8 p-4">
   <h2 class="row-span-1 col-span-full text-3xl text-white font-bold">
     Platzi Store!
   </h2>
@@ -6,6 +6,21 @@
     <app-products />
   </div>
   <app-product-form class="col-span-2 col-start-7 sticky top-0 h-96" />
-</div>
+</div> -->
+<header class="flex items-center justify-between p-4">
+  <a
+    routerLink="/"
+    class="row-span-1 col-span-full text-3xl text-white font-bold bg-gray-700 p-2"
+  >
+    Platzi Store!
+  </a>
+  <nav class="flex items-center">
+    <a routerLink="product/add" class="underline text-white"
+      >Agregar producto</a
+    >
+  </nav>
+</header>
 
-<router-outlet />
+<main class="p-4">
+  <router-outlet />
+</main>

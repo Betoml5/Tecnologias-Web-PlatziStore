@@ -1,17 +1,28 @@
-<div class="grid grid-cols-2">
-  @for (item of products; track item.id) {
-  <div class="bg-white shadow-md p-4 rounded-md m-4">
-    <h2 class="text-2xl font-semibold mb-2">{{ item.title }}</h2>
-    <p>{{ item.description }}</p>
+<div class="grid grid-cols-5">
+  @if (products.length === 0) {
+  <p class="col-span-full text-center text-white text-2xl font-bold">
+    No hay productos
+  </p>
+  } @for (item of products; track item.id) {
+  <div class="bg-white shadow-md p-4 rounded-md m-4 overflow-ellipsis">
+    <h2 class="text-2xl font-semibold mb-2 whitespace-nowrap truncate">
+      {{ item.title }}
+    </h2>
+    <p class="text-ellipsis whitespace-nowrap truncate">
+      {{ item.description }}
+    </p>
     <p>{{ item.price }}</p>
     <img
       [src]="item.images[0]"
       alt="{{ item.title }}"
       class="mt-4 rounded-md"
     />
-    <a routerLink="product/{{ item.id }}" class="mt-4 underline"
-      >Ver detalles</a
-    >
+    <div class="flex items-center justify-between mt-4">
+      <a routerLink="product/{{ item.id }}" class="underline">Ver detalles</a>
+      <button class="text-red-500 underline" (click)="onDelete(item.id)">
+        Eliminar
+      </button>
+    </div>
   </div>
   }
 </div>

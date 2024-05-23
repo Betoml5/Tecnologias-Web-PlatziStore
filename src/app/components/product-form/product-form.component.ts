@@ -3,6 +3,7 @@ import { Category, Product, ProductCreate } from '../../types';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -23,8 +24,6 @@ export class ProductFormComponent {
   };
 
   onSubmit() {
-    console.log(this.product);
-
     const newProduct = {
       title: this.product.title,
       price: this.product.price,
@@ -34,13 +33,12 @@ export class ProductFormComponent {
     };
 
     this.apiService.createProduct(newProduct).subscribe((data: any) => {
-      console.log(data);
+      this.router.navigate(['/']);
     });
   }
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
     this.apiService.getCategories().subscribe((data: any) => {
-      console.log(data);
       this.categories = data;
     });
   }

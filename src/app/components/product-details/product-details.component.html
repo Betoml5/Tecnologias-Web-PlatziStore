@@ -1,50 +1,57 @@
-<form class="flex flex-col p-4" (ngSubmit)="onSubmit()">
-  <label for="title">Nombre del producto</label>
-  <input
-    name="title"
-    [(ngModel)]="product.title"
-    type="text"
-    placeholder="Titulo"
-    class="my-2 p-2 rounded-md"
-  />
+<div class="max-w-4xl mx-auto">
+  <form class="flex flex-col p-4" (ngSubmit)="onSubmit()">
+    <label for="title">Nombre del producto</label>
+    <input
+      name="title"
+      [(ngModel)]="product.title"
+      type="text"
+      placeholder="Titulo"
+      class="my-2 p-2 rounded-md"
+    />
 
-  <label for="price">Precio del producto</label>
-  <input
-    name="price"
-    [(ngModel)]="product.price"
-    type="number"
-    placeholder="Precio"
-    class="my-2 p-2 rounded-md"
-  />
+    <label for="price">Precio del producto</label>
+    <input
+      name="price"
+      [(ngModel)]="product.price"
+      type="number"
+      placeholder="Precio"
+      class="my-2 p-2 rounded-md"
+    />
 
-  <label for="description">Descripción del producto</label>
-  <input
-    name="description"
-    [(ngModel)]="product.description"
-    type="text"
-    placeholder="Descripción"
-    class="my-2 p-2 rounded-md"
-  />
+    <label for="description">Descripción del producto</label>
+    <input
+      name="description"
+      [(ngModel)]="product.description"
+      type="text"
+      placeholder="Descripción"
+      class="my-2 p-2 rounded-md"
+    />
 
-  <label for="images">Imagen del producto</label>
-  <input
-    name="images"
-    [(ngModel)]="product.images"
-    type="text"
-    placeholder="URL de imagen"
-    class="my-2 p-2 rounded-md"
-  />
+    <label for="images">Imagen del producto</label>
+    <input
+      name="images"
+      [(ngModel)]="product.images[0]"
+      type="text"
+      placeholder="URL de imagen"
+      class="my-2 p-2 rounded-md"
+    />
 
-  <label for="category">Categoria</label>
-  <select
-    name="category"
-    id="categoria"
-    class="my-2 p-2 rounded-md"
-    [(ngModel)]="product.categoryId"
-  >
-    @for (category of categories; track category.id) {
-    <option [value]="category.id">{{ category.name }}</option>
-    }
-  </select>
-  <input type="submit" class="bg-blue-500 text-white p-2 mt-2 rounded-md" />
-</form>
+    <label for="category">Categoria</label>
+    <select
+      name="category"
+      id="categoria"
+      class="my-2 p-2 rounded-md"
+      [(ngModel)]="product.category.id"
+    >
+      @for (category of categories; track category.id) {
+      <option [value]="category.id">{{ category.name }}</option>
+      }
+    </select>
+    <input
+      (click)="onSubmit()"
+      type="submit"
+      class="bg-blue-500 text-white p-2 mt-2 rounded-md"
+      value="Guardar cambios"
+    />
+  </form>
+</div>
