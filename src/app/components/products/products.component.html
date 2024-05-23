@@ -1,0 +1,17 @@
+<div class="grid grid-cols-2">
+  @for (item of products; track item.id) {
+  <div class="bg-white shadow-md p-4 rounded-md m-4">
+    <h2 class="text-2xl font-semibold mb-2">{{ item.title }}</h2>
+    <p>{{ item.description }}</p>
+    <p>{{ item.price }}</p>
+    <img
+      [src]="item.images[0]"
+      alt="{{ item.title }}"
+      class="mt-4 rounded-md"
+    />
+    <a routerLink="product/{{ item.id }}" class="mt-4 underline"
+      >Ver detalles</a
+    >
+  </div>
+  }
+</div>
